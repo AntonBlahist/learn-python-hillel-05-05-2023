@@ -26,3 +26,5 @@ radians_output = round(((degrees_input * math.pi) / 180), 5)
 
 print(radians_input, "рад равняется ", degrees_output, "°")
 print(degrees_input, "° равняется", radians_output, "рад")
+
+# Осталось добавить возможность пользователю выбирать нужный конвертер.
