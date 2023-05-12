@@ -1,8 +1,8 @@
 from math import sqrt
 
-a = float(input('First number: '))
-b = float(input('Second number: '))
-c = float(input('Third number: '))
+a = float(input('Первое число: '))
+b = float(input('Второе число: '))
+c = float(input('Третье число: '))
 
 d = b ** 2 - 4 * a * c
 
