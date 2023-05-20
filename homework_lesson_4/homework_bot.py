@@ -1,36 +1,48 @@
+# Начало бота, предложение ввести фразу
 print("Бот готов к работе.\nДля запуска введите предложение.")
 in_phrase = input("> ")
 in_phrase = in_phrase.lower()
-in_phrase = in_phrase.replace('.', '')
-in_phrase = in_phrase.replace(',', '')
-in_phrase = in_phrase.replace('-', '')
-in_phrase = in_phrase.replace(':', '')
-in_phrase = in_phrase.replace(';', '')
-in_phrase = in_phrase.replace('?', '')
-in_phrase = in_phrase.replace('!', '')
-in_phrase = in_phrase.rstrip()
-
+# Создал списки ключевых слов для функции any
 greetings = ["привет", "здравствуйте", "здравствуй", "добрый день",
              "добрый вечер", "доброе утро"]
-whassup = ["как дела", "что делаешь", "чем занимаешься",
-           "чем занят", "как у тебя дела", "что ты делаешь",
-           "чем ты занимаешься", "чем ты занят", "что нового",
-           "что у тебя нового"]
+whassup = ["как дела?", "что делаешь?", "чем занимаешься?",
+           "чем занят?", "как у тебя дела?", "что ты делаешь?",
+           "чем ты занимаешься?", "чем ты занят?", "что нового?",
+           "что у тебя нового?"]
 movies = ["фильм", "кино", "сериал", "кинотеатр"]
-
 farewell = ["гудбай", "до встречи", "до свидания", "прощай", "пока"]
-
+bot_options = ["что умеешь?", "что ты умеешь?"]
+# Цикл while для непрерывной работы бота.
+# if, elif, else - для ответа бота на ключевые слова из списка.
 while True:
-    if in_phrase == "":
-        print("Кажется, Вы ничего не ввели. Попробуйте заново.\n> ")
-    elif any([x in in_phrase for x in greetings]):
-        print("Привет. Я самый простенький бот. Вроде бы, пока работаю.\n> ")
-    elif any([x in in_phrase for x in whassup]):
-        print("Пытаюсь душить Python, но пока что Python душит меня.\n> ")
-    elif any([x in in_phrase for x in movies]):
-        print("Ни слова больше. Лучше посмотрите фильм Игра 1997 года.\n> ")
-    elif any([x in in_phrase for x in farewell]):
-        print("Надеюсь, ещё увидимся.")
+    if in_phrase == "":  # Если ничего не ввели.
+        print("BOT: Кажется, Вы ничего не ввели. Попробуйте заново.")
+        in_phrase = input("> ").lower()
+        continue
+    elif any([x in in_phrase for x in greetings]):  # Если поздоровались.
+        print("BOT: Привет. Я самый простенький бот. Вроде бы, пока работаю.")
+        in_phrase = input("> ").lower()
+        continue
+    elif any([x in in_phrase for x in bot_options]):  # Что умею.
+        print("BOT: Я умею здороваться, прощаться, советовать фильм и "
+              "отвечать на вопрос «как дела?». "
+              "Пока бедновато, но это пока, хех.")
+        in_phrase = input("> ").lower()
+        continue
+    elif any([x in in_phrase for x in whassup]):  # Как дела, что делаю.
+        print("BOT: Пытаюсь душить Python, но пока что Python душит меня.")
+        in_phrase = input("> ").lower()
+        continue
+    elif any([x in in_phrase for x in movies]):  # Советую фильм.
+        print("BOT: Ни слова больше. Лучше посмотрите фильм Игра 1997 года.")
+        in_phrase = input("> ").lower()
+        continue
+    elif any([x in in_phrase for x in farewell]):  # Прощаюсь.
+        print("BOT: Пока-пока. Надеюсь, ещё увидимся.")
+        print("\nБот пошел отдыхать, "
+              "чтобы в будущем обзавестись новым функционалом.")
         exit()
-    else:
-        print("Ничего не понятно, но очень интересно.\n> ")
+    else:  # Если нет соответствующего ключевого слова.
+        print("BOT: Ничего не понятно, но очень интересно.")
+        in_phrase = input("> ").lower()
+        continue
