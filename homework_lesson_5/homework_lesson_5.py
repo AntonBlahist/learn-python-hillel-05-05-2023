@@ -6,46 +6,64 @@ option = input("Выберите программу: "
                "\n2) Вычитание "
                "\n3) Умножение "
                "\n4) Деление"
+               "\nВведите quit для выхода."
                "\n> ")
 option = option.lower()
 
-# Списки для вмещения вводимых чисел.
-sum_list = []
-subtract_list = []
-multiply_list = []
-divide_list = []
+# Переменные для вмещения вводимых чисел.
+sum_list = []  # список для операции сложения
+subtract_list = []  # список для операции вычитания
+multiply_list = []  # список для операции умножения
+divide_list = []  # список для операции деления
 
-if option == "1" or "1)" or "сложение":
-    print("Вводите числа по одному, затем — «sum» для сложения.")
-    for_sum = input("> ").lower()
-    # Сделать добавление вводимых чисел в список.
-    # Сделать ввод sum.
+if option in ["1", "1)", "сложение"]:
+    print("Введите числа по одному, затем — «sum» для сложения.")
+    while True:
+        num = input("> ")
+        if num == "sum":
+            break
+        sum_list.append(float(num))
+    # Ввод операции сложения.
     sum_result = sum(sum_list)
-    print(sum_result)
-elif option == "2" or "2)" or "вычитание":
-    print("Вводите числа по одному, затем — «subtract» для вычитания.")
-    for_subtract = input("> ").lower()
-    # Сделать добавление вводимых чисел в список.
-    # Сделать ввод subtract.
-    subtract_result =  # вычитание(subtract_list).
-    print(subtract_result)
-elif option == "3" or "3)" or "умножение":
-    print("Вводите числа по одному, затем — «multiply» для умножения.")
-    for_multiply = input("> ").lower()
-    # Сделать добавление вводимых чисел в список.
-    # Сделать ввод multiply.
+    print(f"Результат операции сложения: {sum_result}")
+
+elif option in ["2", "2)", "вычитание"]:
+    print("Введите числа по одному, затем — «subtract» для вычитания.")
+    while True:
+        num = input("> ")
+        if num == "subtract":
+            break
+        subtract_list.append(float(num))
+    # Ввод операции вычитания.
+    subtract_result = subtract_list[0] - sum(subtract_list[1:])
+    print(f"Результат операции вычитания: {subtract_result}")
+
+elif option in ["3", "3)", "умножение"]:
+    print("Введите числа по одному, затем — «multiply» для умножения.")
+    while True:
+        num = input("> ")
+        if num == "multiply":
+            break
+        multiply_list.append(float(num))
+    # Ввод операции умножения.
     multiply_result = math.prod(multiply_list)
-    print(multiply_result)
-elif option == "4" or "4)" or "деление":
-    print("Вводите числа по одному, затем — «divide» для деления.")
-    for_divide = input("> ").lower()
-    # Сделать добавление вводимых чисел в список.
-    # Сделать ввод divide.
-    divide_result =  # деление(divide_list)
-    print(divide_result)
+    print(f"Результат операции умножения: {multiply_result}")
+
+elif option in ["4", "4)", "деление"]:
+    print("Введите числа по одному, затем — «divide» для деления.")
+    while True:
+        num = input("> ")
+        if num == "divide":
+            break
+        divide_list.append(float(num))
+    # Ввод операции деления.
+    divide_result = divide_list[0] / math.prod(divide_list[1:])
+    print(f"Результат операции деления: {divide_result}")
+# Для выхода.
 elif option == "quit":
     print("Выход из программы...\n...завершён.")
     exit()
+# Неправильный ввод на этапе выбора программы.
 else:
     print("Вы не выбрали программу. Попробуйте заново.")
     option = input("> ").lower()
