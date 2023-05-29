@@ -1,3 +1,7 @@
+print("Программа удаляет из текста все круглые скобки "
+      "и всё, что было внутри этих скобок.")
+
+
 # Создал функцию parentheses_text_remove.
 # Она делает всю работу, а в конце мы просто вызываем её.
 def parentheses_text_remove(text):
@@ -19,10 +23,38 @@ def parentheses_text_remove(text):
         в новом тексте не участвует.
         """
         text = text[:start] + text[end + 1:]
-    return text
+        return text
 
 
-# Собственно, ввод и вывод текста.
-user_input = input("Введите текст: ")
-final_output = parentheses_text_remove(user_input)
-print("Результат:", final_output)
+# Добавил всё в цикл, чтобы имитировать какое-никакое общение.
+while True:
+    initial_input = input("Для запуска введите «Старт», "
+                          "для выхода введите «Выход»."
+                          "\n> ")
+    initial_input = initial_input.lower()
+    initial_input = initial_input.strip()
+
+    if initial_input == "старт":
+        while True:
+            # Собственно, ввод и вывод текста.
+            user_input = input("Введите текст: ")
+            final_output = parentheses_text_remove(user_input)
+            if user_input == "":
+                print("Вы ничего не ввели. Попробуйте заново "
+                      "или введите «Выход» для выхода.")
+                continue
+            elif user_input in ["выход", "Выход", "ВЫХОД"]:
+                print("Выход из программы..."
+                      "\n...завершён.")
+                exit()
+            # Если в тексте нет скобок, результат будет None.
+            elif final_output is None:
+                final_output = "В тексте нет выражений в скобках."
+            print("Результат:", final_output)
+    elif initial_input == "выход":
+        print("Выход из программы..."
+              "\n...завершён.")
+        quit()
+    else:
+        print("Некорректный ввод. Попробуйте заново.")
+        continue
