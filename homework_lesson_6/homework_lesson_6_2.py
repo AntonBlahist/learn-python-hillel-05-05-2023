@@ -23,7 +23,7 @@ def parentheses_text_remove(text):
         в новом тексте не участвует.
         """
         text = text[:start] + text[end + 1:]
-        return text
+    return text
 
 
 # Добавил всё в цикл, чтобы имитировать какое-никакое общение.
@@ -47,9 +47,6 @@ while True:
                 print("Выход из программы..."
                       "\n...завершён.")
                 exit()
-            # Если в тексте нет скобок, результат будет None.
-            elif final_output is None:
-                final_output = "В тексте нет выражений в скобках."
             print("Результат:", final_output)
     elif initial_input == "выход":
         print("Выход из программы..."
