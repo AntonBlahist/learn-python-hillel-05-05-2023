@@ -27,25 +27,30 @@ while True:
             # Убираем все знаки препинания с помощью цикла.
             for character in string.punctuation:
                 user_input = user_input.replace(character, "")
-
             # Создаем переменную, чтобы затем использовать её в if/else.
             palindrome = user_input[::-1]
 
             # Собственно, сама проверка на палиндром.
-            if user_input == palindrome:
+            if palindrome == "":
+                print("Вы ничего не ввели. Попробуйте заново "
+                      "или введите «Выход» для выхода.")
+                continue
+            elif user_input == palindrome:
                 print(f"Введённый текст является палиндромом — {palindrome}.")
             elif user_input == "выход":
-                break
+                print("Выход из программы..."
+                      "\n...завершён.")
+                exit()
             # Небольшой прикол.
             elif palindrome == "выход":
                 print("Кажется, вы нашли пасхалочку.")
-                break
+                exit()
             else:
                 print(f"{user_input} не является палиндромом.")
     elif initial_input == "выход":
         print("Выход из программы..."
               "\n...завершён.")
-        quit()
+        exit()
     else:
         print("Некорректный ввод. Попробуйте заново.")
         continue
