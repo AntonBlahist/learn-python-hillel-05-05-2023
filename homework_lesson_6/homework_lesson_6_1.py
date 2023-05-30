@@ -5,21 +5,15 @@ import string
 while True:
     initial_input = input("Для запуска введите «Старт», "
                           "для выхода введите «Выход»."
-                          "\n> ")
-    initial_input = initial_input.lower()
-    initial_input = initial_input.strip()
+                          "\n> ").lower().strip()
 
     if initial_input == "старт":
         while True:
 
             user_input = input("Для проверки палиндрома введите текст:"
-                               "\n> ")
-            user_input = user_input.lower()
-            # Убираем переносы и табуляцию по краям.
-            user_input = user_input.strip()
-            # Убираем переносы и табуляцию внутри строки.
-            user_input = user_input.replace("\n", "")
-            user_input = user_input.replace("\t", "")
+                               "\n> ").lower()
+            # Убираем переносы и табуляцию.
+            user_input = user_input.replace("\n", "").replace("\t", "")
             # Убираем пробелы внутри предложения.
             # Иначе не заметит ввод по типу "Аби ріці риба".
             user_input = user_input.replace(" ", "")
