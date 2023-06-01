@@ -30,10 +30,7 @@ def parentheses_text_remove(text):
 while True:
     initial_input = input("Для запуска введите «Старт», "
                           "для выхода введите «Выход»."
-                          "\n> ")
-    initial_input = initial_input.lower()
-    initial_input = initial_input.strip()
-
+                          "\n> ").lower().strip()
     if initial_input == "старт":
         while True:
             # Собственно, ввод и вывод текста.
