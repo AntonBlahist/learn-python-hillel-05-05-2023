@@ -7,12 +7,24 @@ def triangle_side():
     Return <triangle sides>.
     """
     triangle_sides = []
-    a = int(input("Enter side A: "))
-    triangle_sides.append(a)
-    b = int(input("Enter side B: "))
-    triangle_sides.append(b)
-    c = int(input("Enter side C: "))
-    triangle_sides.append(c)
+    a = input("Enter side A: ")
+    if a == "":
+        print("You didn't indicate the side.")
+    else:
+        a = int(a)
+        triangle_sides.append(a)
+    b = input("Enter side B: ")
+    if b == "":
+        print("You didn't indicate the side.")
+    else:
+        b = int(b)
+        triangle_sides.append(b)
+    c = input("Enter side C: ")
+    if c == "":
+        print("You didn't indicate the side.")
+    else:
+        c = int(c)
+        triangle_sides.append(c)
     for x in triangle_sides:
         if x <= 0:
             print("The side of the triangle must be greater than 0.")
@@ -25,6 +37,8 @@ def triangle_exist(sides):
     Verifying the existence of a triangle.
     Return True or False.
     """
+    if len(sides) < 3:
+        return False
     if (sides[0] + sides[1]) > sides[2] \
             and (sides[0] + sides[2]) > sides[1] \
             and (sides[1] + sides[2]) > sides[0]:
