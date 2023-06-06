@@ -9,12 +9,6 @@ def parentheses_text_remove(text):
     while "(" in text:
         # Переменная start, находит открывающую скобку.
         start = text.index("(")
-        """
-        Следующая строка кода нужна для удаления пробела перед "(".
-        Слайсим весь текст до start, т.е. до "(" и ищем последний
-        пробел до start.
-        """
-        start = text[:start].rfind(" ", 0, start)
         # Переменная end находит закрывающую скобку.
         end = text.index(")", start)
         """
