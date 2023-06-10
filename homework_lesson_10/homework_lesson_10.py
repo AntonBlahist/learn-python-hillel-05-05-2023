@@ -40,5 +40,22 @@ def notes_shortest():
     """
 
 
+def notes_help():
+    """
+    The function returns a list (str actually) of keywords and what they do.
+    add - to add a note.
+    all - to show all the notes.
+    earliest - to show all the notes from the earliest to the latest.
+    latest - to show all the notes from the latest to the earliest.
+    longest - to show all the notes from the longest to the shortest.
+    shortest - to show all the notes from the shortest to the longest.
+    quit - to quit.
+    """
+
+
 if __name__ == "__main__":
     pass
+    # if <user_input> == "quit":
+    #    exit()
+    # if <user_input> == "help":
+    #   print(notes_help())
