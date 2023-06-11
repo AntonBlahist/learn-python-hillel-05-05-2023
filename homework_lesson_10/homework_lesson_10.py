@@ -4,8 +4,7 @@ def notes_add(input_note):
     and returns the corresponding tuple.
     """
     length = len(input_note)
-    input_note = (input_note, length)
-    return input_note
+    return input_note, length
 
 
 def show_all(notes_list):
@@ -13,10 +12,9 @@ def show_all(notes_list):
     The function returns all the saved notes.
     """
     i = 0
-    k = 0
     pop_notes = []
-    for x in notes_list:
-        pop_notes = notes_list.pop[i][k]
+    for item in notes_list:
+        pop_notes = notes_list.pop(i)
         i = i + 2
     return pop_notes
 
@@ -71,30 +69,31 @@ def notes_help():
 
 if __name__ == "__main__":
     print("Use keywords to start. To see all keywords, use \"help\".")
+    all_notes = []
     while True:
-        all_notes = []
         user_input = input("> ").lower().strip()
         if user_input == "add":
             note = input("Enter your note:\n> ")
             note = notes_add(note)
             all_notes += note
-        if user_input == "all":
-            notes = show_all(all_notes)
-            for note in notes:
-                print(note)
             continue
-        if user_input == "earliest":
+        elif user_input == "all":
+            notes = show_all(all_notes)
+            for x in notes:
+                print(x)
+            continue
+        elif user_input == "earliest":
             pass
-        if user_input == "latest":
+        elif user_input == "latest":
             pass
-        if user_input == "longest":
+        elif user_input == "longest":
             pass
-        if user_input == "shortest":
+        elif user_input == "shortest":
             pass
-        if user_input == "help":
+        elif user_input == "help":
             print(notes_help())
             continue
-        if user_input == "quit":
+        elif user_input == "quit":
             print("Bye-bye!")
             exit()
         else:
