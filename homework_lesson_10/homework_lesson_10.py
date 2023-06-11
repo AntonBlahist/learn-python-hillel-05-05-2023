@@ -25,6 +25,7 @@ def notes_earliest():
     """
     The function returns saved notes in chronological order -
     from the earliest to the latest.
+    *возвращает список без длины в оригинальном порядке*
     """
 
 
@@ -32,6 +33,7 @@ def notes_latest():
     """
     The function returns the saved notes in chronological order -
     from the latest to the earliest.
+    *возвращает список без длины в обратном порядке*
     """
 
 
