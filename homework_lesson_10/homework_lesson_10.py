@@ -8,13 +8,17 @@ def notes_add(input_note):
     return input_note
 
 
-def notes_all(input_note):
+def show_all(notes_list):
     """
-    The function saves all the notes.
+    The function returns all the saved notes.
     """
-    notes_list = []
-    notes_list.append(input_note)
-    return notes_list
+    i = 0
+    k = 0
+    pop_notes = []
+    for x in notes_list:
+        pop_notes = notes_list.pop[i][k]
+        i = i + 2
+    return pop_notes
 
 
 def notes_earliest():
@@ -45,18 +49,6 @@ def notes_shortest():
     """
 
 
-def show_all(notes_list):
-    """
-    The function returns all the saved notes.
-    """
-    i = 0
-    pop_notes = []
-    for x in notes_list:
-        pop_notes = notes_list.pop(i)
-        i = i + 2
-    return pop_notes
-
-
 def notes_help():
     """
     The function returns a list (str actually) of keywords and what they do.
@@ -78,19 +70,31 @@ def notes_help():
 if __name__ == "__main__":
     print("Use keywords to start. To see all keywords, use \"help\".")
     while True:
+        all_notes = []
         user_input = input("> ").lower().strip()
         if user_input == "add":
             note = input("Enter your note:\n> ")
             note = notes_add(note)
-            all_notes = notes_all(note)
+            all_notes += note
         if user_input == "all":
             notes = show_all(all_notes)
             for note in notes:
                 print(note)
             continue
+        if user_input == "earliest":
+            pass
+        if user_input == "latest":
+            pass
+        if user_input == "longest":
+            pass
+        if user_input == "shortest":
+            pass
+        if user_input == "help":
+            print(notes_help())
+            continue
         if user_input == "quit":
             print("Bye-bye!")
             exit()
-        if user_input == "help":
-            print(notes_help())
+        else:
+            print("Incorrect input. Try again.\n> ")
             continue
