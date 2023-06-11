@@ -7,34 +7,6 @@ def notes_add(input_note):
     return input_note, length
 
 
-def show_all(notes_list):
-    """
-    The function returns all the saved notes.
-    """
-    i = 0
-    pop_notes = []
-    for item in notes_list:
-        pop_notes = notes_list.pop(i)
-        i = i + 2
-    return pop_notes
-
-
-def notes_earliest():
-    """
-    The function returns saved notes in chronological order -
-    from the earliest to the latest.
-    *возвращает список без длины в оригинальном порядке*
-    """
-
-
-def notes_latest():
-    """
-    The function returns the saved notes in chronological order -
-    from the latest to the earliest.
-    *возвращает список без длины в обратном порядке*
-    """
-
-
 def notes_longest():
     """
     The function returns the saved notes in order of their length -
@@ -54,7 +26,6 @@ def notes_help():
     The function returns a list (str actually) of keywords and what they do.
     """
     help_print = "add - to add a note." \
-                 "\nall - to show all the notes." \
                  "\nearliest - to show all the notes" \
                  "from the earliest to the latest." \
                  "\nlatest - to show all the notes" \
@@ -74,18 +45,17 @@ if __name__ == "__main__":
         user_input = input("> ").lower().strip()
         if user_input == "add":
             note = input("Enter your note:\n> ")
-            note = notes_add(note)
-            all_notes += note
-            continue
-        elif user_input == "all":
-            notes = show_all(all_notes)
-            for x in notes:
-                print(x)
+            note, note_length = notes_add(note)
+            all_notes.append(note)
             continue
         elif user_input == "earliest":
-            pass
+            for x in all_notes:
+                print(x)
+            continue
         elif user_input == "latest":
-            pass
+            for x in all_notes[::-1]:
+                print(x)
+            continue
         elif user_input == "longest":
             pass
         elif user_input == "shortest":
