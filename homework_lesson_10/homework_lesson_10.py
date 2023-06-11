@@ -1,26 +1,3 @@
-def notes_add(input_note):
-    """
-    The function saves users' notes and their lengths into a tuple
-    and returns the corresponding tuple.
-    """
-    length = len(input_note)
-    return input_note, length
-
-
-def notes_longest():
-    """
-    The function returns the saved notes in order of their length -
-    from the longest to the shortest.
-    """
-
-
-def notes_shortest():
-    """
-    The function returns the saved notes in order of their length -
-    from the shortest to the longest.
-    """
-
-
 def notes_help():
     """
     The function returns a list (str actually) of keywords and what they do.
@@ -44,8 +21,7 @@ if __name__ == "__main__":
     while True:
         user_input = input("> ").lower().strip()
         if user_input == "add":
-            note = input("Enter your note:\n> ")
-            note, note_length = notes_add(note)
+            note = input("Enter your note:\n> ").lower().strip()
             all_notes.append(note)
             continue
         elif user_input == "earliest":
@@ -57,9 +33,15 @@ if __name__ == "__main__":
                 print(x)
             continue
         elif user_input == "longest":
-            pass
+            longest_list = sorted(all_notes, key=len, reverse=True)
+            for x in longest_list:
+                print(x)
+            continue
         elif user_input == "shortest":
-            pass
+            shortest_list = sorted(all_notes, key=len)
+            for x in shortest_list:
+                print(x)
+            continue
         elif user_input == "help":
             print(notes_help())
             continue
@@ -67,5 +49,5 @@ if __name__ == "__main__":
             print("Bye-bye!")
             exit()
         else:
-            print("Incorrect input. Try again.\n> ")
+            print("Incorrect input. Try again.")
             continue
