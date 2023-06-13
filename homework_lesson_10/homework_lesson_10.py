@@ -1,3 +1,39 @@
+def notes_earliest(notes):
+    """
+    The function returns a list of the saved notes
+    from the earliest to the latest.
+    """
+    earliest_list = notes
+    return earliest_list
+
+
+def notes_latest(notes):
+    """
+    The function returns a list of the saved notes
+    from the latest to the earliest.
+    """
+    latest_list = notes[::-1]
+    return latest_list
+
+
+def notes_longest(notes):
+    """
+    The function returns a list of the saved notes
+    from the longest to the shortest.
+    """
+    longest_list = sorted(notes, key=len, reverse=True)
+    return longest_list
+
+
+def notes_shortest(notes):
+    """
+    The function returns a list of the saved notes
+    from the shortest to the longest.
+    """
+    shortest_list = sorted(notes, key=len)
+    return shortest_list
+
+
 def notes_help():
     """
     The function returns a list (str actually) of keywords and what they do.
@@ -25,21 +61,23 @@ if __name__ == "__main__":
             all_notes.append(note)
             continue
         elif user_input == "earliest":
-            for x in all_notes:
+            result = notes_earliest(all_notes)
+            for x in result:
                 print(x)
             continue
         elif user_input == "latest":
-            for x in all_notes[::-1]:
+            result = notes_latest(all_notes)
+            for x in result:
                 print(x)
             continue
         elif user_input == "longest":
-            longest_list = sorted(all_notes, key=len, reverse=True)
-            for x in longest_list:
+            result = notes_longest(all_notes)
+            for x in result:
                 print(x)
             continue
         elif user_input == "shortest":
-            shortest_list = sorted(all_notes, key=len)
-            for x in shortest_list:
+            result = notes_shortest(all_notes)
+            for x in result:
                 print(x)
             continue
         elif user_input == "help":
