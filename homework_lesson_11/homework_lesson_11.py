@@ -73,7 +73,7 @@ def notes_file_open():
     notes_list = []
     file_name = "notes.txt"
     if os.path.isfile(file_name):
-        with open(file_name, "r+") as f:
+        with open(file_name, "r") as f:
             for line in f:
                 notes_list.append(line.strip())
         return notes_list
