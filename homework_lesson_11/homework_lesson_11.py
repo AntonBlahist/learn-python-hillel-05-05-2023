@@ -9,7 +9,6 @@ def notes_add(notes):
     file_name = "notes.txt"
     with open(file_name, "a") as f:
         f.write(notes + "\n")
-        f.close()
         return notes
 
 
@@ -74,15 +73,13 @@ def notes_file_open():
     notes_list = []
     file_name = "notes.txt"
     if os.path.isfile(file_name):
-        with open(file_name, "r") as f:
-            for x in f:
-                notes_list = notes_list.append(x)
-            f.close()
+        with open(file_name, "r+") as f:
+            for line in f:
+                notes_list.append(line.strip())
         return notes_list
     else:
-        print("Creating a file...")
-        with open(file_name, "w") as f:
-            f.close()
+        with open(file_name, "w"):
+            print("Creating a file...")
         return notes_list
 
 
