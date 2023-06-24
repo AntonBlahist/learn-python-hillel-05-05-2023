@@ -23,23 +23,18 @@ def get_unique_id(filename):
         for row in reader:
             unique_id_dict[i] = row
             i += 1
-        print(unique_id_dict)
+        return unique_id_dict
 
 
-def get_category_id():
+def get_category_brand_id(unique_id_dict: dict, category, brand: tuple):
     """
-    The function creates a category ID and prints a list of unique IDs
-    that have this value in the category field.
+    The function creates a dictionary
+    in which keys are a tuple (category, brand)
+    and values are a list of unique IDs
+    which have corresponding values in the category and brand fields.
     """
-    pass
-
-
-def get_brand_id():
-    """
-    The function creates a category ID and prints a list of unique IDs
-    that have this value in the brand field.
-    """
-    pass
+    category_brand_tuple = (category, brand)
+    # if category in dict.keys():
 
 
 def get_product_quantity():
@@ -69,5 +64,7 @@ if __name__ == "__main__":
     if not os.path.isfile("tech_inventory.csv"):
         print("The program won't start without tech_inventory.csv.")
         exit(-1)
-    # open_csv_file("tech_inventory.csv")
-    get_unique_id("tech_inventory.csv")
+    open_csv_file("tech_inventory.csv")
+    ids_dict = get_unique_id("tech_inventory.csv")
+    for key, value in ids_dict.items():
+        print(key, ":", value)
