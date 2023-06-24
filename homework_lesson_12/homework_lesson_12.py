@@ -7,16 +7,23 @@ def open_csv_file(filename):
     The function reads the CSV file and prints every row.
     """
     with open(filename, newline="") as csv_file:
-        reader = csv.reader(csv_file)
+        reader = csv.DictReader(csv_file)
         for row in reader:
             print(row)
 
 
-def get_unique_id():
+def get_unique_id(filename):
     """
     The function creates a unique ID for every row in the CSV file.
     """
-    pass
+    with open(filename, newline="") as csv_file:
+        reader = csv.DictReader(csv_file)
+        unique_id_dict = {}
+        i = 1
+        for row in reader:
+            unique_id_dict[i] = row
+            i += 1
+        print(unique_id_dict)
 
 
 def get_category_id():
@@ -62,4 +69,5 @@ if __name__ == "__main__":
     if not os.path.isfile("tech_inventory.csv"):
         print("The program won't start without tech_inventory.csv.")
         exit(-1)
-    open_csv_file("tech_inventory.csv")
+    # open_csv_file("tech_inventory.csv")
+    get_unique_id("tech_inventory.csv")
