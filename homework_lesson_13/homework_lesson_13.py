@@ -58,13 +58,16 @@ if __name__ == "__main__":
     potential_food = ["dry cat food", "milk", "chicken",
                       "fish", "bugs", "bread", "apple",
                       "banana", "candy"]
-    for cat in cats:
-        print(f"Feeding {cat.name}")
-        for random_food in choices(potential_food, k=3):
-            cat.eat(random_food)
-        cat.walk()
-        print(cat)
-        print('=' * 20)
 
     week = ("Sunday", "Monday", "Tuesday", "Wednesday",
             "Thursday", "Friday", "Saturday")
+
+    for day in week:
+        print('=' * 20 + day + '=' * 20)
+        for cat in cats:
+            print(f"Feeding {cat.name}")
+            for random_food in choices(potential_food, k=3):
+                cat.eat(random_food)
+            cat.walk()
+            print(cat)
+            print('=' * 45)
