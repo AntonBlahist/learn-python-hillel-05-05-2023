@@ -76,7 +76,7 @@ class Cat:
 
     def meow(self):
         """
-        A method for meow.    ╱|、
+        A method for meow.  ╱|、
                           (˚ˎ 。7
                            |、˜〵
                           じしˍ,)ノ
