@@ -3,14 +3,26 @@ from random import choices, randint
 
 class Cat:
     def __init__(self, name: str, age: int, breed: str, preferred_food: set):
+        """
+        Class Cat
+        :param name: name
+        :param age: age
+        :param breed: breed
+        :param preferred_food: preferred_food
+        """
         self.name = name
         self.age = age
         self.breed = breed
         self.preferred_food = preferred_food
-        self.hungry = True
-        self.hours_outdoors = 0
+        self.hungry = True  # default status for each object
+        self.hours_outdoors = 0  # default status object
+        self.week = ("Sunday", "Monday", "Tuesday", "Wednesday",
+                     "Thursday", "Friday", "Saturday")
 
     def __str__(self):
+        """
+        The function returns a string description for each object.
+        """
         output_string = f"{self.breed} {self.name}, {self.age} "
         if self.age == 1:
             output_string += "year"
@@ -20,28 +32,55 @@ class Cat:
                          f"hungry: {self.hungry}"
         return output_string
 
-    def eat(self, food: str):
-        if self.hungry:
-            if food in self.preferred_food:
-                print(f"{self.name} eats {food}")
-                self.hungry = False
+    def eat(self):
+        """
+        A method for feeding cats every day.
+        It compares random food with preferred
+        and shows the status by the end of each day.
+        """
+        potential_food = ["dry cat food", "milk", "chicken",
+                          "fish", "bugs", "bread", "apple",
+                          "banana", "candy"]
+        for day in self.week:
+            print("=" * 20 + f" It's {day} " + "=" * 20)
+            self.hungry = True
+            for food in choices(potential_food, k=3):
+                if self.hungry:
+                    if food in self.preferred_food:
+                        print(f"{self.name} eats {food}")
+                        self.hungry = False
+                        break
+                    else:
+                        print(f"{self.name} doesn't eat {food}")
+                        self.meow()
+                else:
+                    print(f"{self.name} is not hungry now")
+            if self.hungry:
+                print(f"{self.name} is hungry today!!!")
             else:
-                print(f"{self.name} doesn't eat {food}")
-                self.meow()
-        else:
-            print(f"{self.name} is not hungry")
+                print(f"{self.name} is not hungry today")
 
     def walk(self):
-        hours = randint(1, 4)
-        if hours == 1:
-            print(f"{self.name} walked for {hours} hour")
-        else:
-            print(f"{self.name} walked for {hours} hours")
-        self.hours_outdoors += hours
-        if self.hours_outdoors > 3:
-            self.hungry = True
+        """
+        A method for walking for a random number of hours.
+        """
+        for day in self.week:
+            hours = randint(1, 4)
+            if hours == 1:
+                print(f"{self.name} walked for {hours} hour on {day}")
+            elif hours == 0:
+                print(f"{self.name} didn't walk today")
+            else:
+                print(f"{self.name} walked for {hours} hours on {day}")
+            self.hours_outdoors += hours
 
     def meow(self):
+        """
+        A method for meow.    ╱|、
+                          (˚ˎ 。7
+                           |、˜〵
+                          じしˍ,)ノ
+        """
         print(f"{self.name} says: Meow")
 
 
@@ -55,19 +94,10 @@ if __name__ == "__main__":
 
     cats = [tom, felix, oscar, leo, simba, luna]
 
-    potential_food = ["dry cat food", "milk", "chicken",
-                      "fish", "bugs", "bread", "apple",
-                      "banana", "candy"]
-
-    week = ("Sunday", "Monday", "Tuesday", "Wednesday",
-            "Thursday", "Friday", "Saturday")
-
-    for day in week:
-        print('=' * 20 + day + '=' * 20)
-        for cat in cats:
-            print(f"Feeding {cat.name}")
-            for random_food in choices(potential_food, k=3):
-                cat.eat(random_food)
-            cat.walk()
-            print(cat)
-            print('=' * 45)
+    for cat in cats:
+        cat.eat()
+        print("=" * 50)
+        cat.walk()
+        print("=" * 50)
+        print(cat)
+        print("=" * 50)
