@@ -13,6 +13,7 @@ class Animal:
         self.say_word = say_word
         self.preferred_food = preferred_food
         self.hungry = True
+        self.vet_check = False
 
     def say(self):
         """
@@ -43,5 +44,12 @@ class Animal:
         The method is responsible for caring for an animal.
         :param hours: how many hours we spend with the animal
         :return: what we get in return
+        """
+        raise NotImplementedError
+
+    def go_to_vet(self):
+        """
+        The method is responsible for
+        checking if the animal needs to be examined by a vet.
         """
         raise NotImplementedError
