@@ -1,3 +1,6 @@
+from random import randint
+
+
 class Animal:
     def __init__(self, name: str, age: int, say_word: str, preferred_food: set):
         """
@@ -49,7 +52,12 @@ class Animal:
 
     def go_to_vet(self):
         """
-        The method is responsible for
-        checking if the animal needs to be examined by a vet.
+        Depending on the odds,
+        the animal either needs to be seen by a vet or not.
         """
-        raise NotImplementedError
+        chances = randint(0, 1)
+        if chances == 1:
+            self.vet_check = True
+            return f"{self.name} needs to be examined by a vet"
+        else:
+            return ""

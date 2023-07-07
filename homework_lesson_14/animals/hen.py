@@ -28,15 +28,3 @@ class Hen(Animal):
         print(f"You take care of {self.name} for {hours} hours"
               f" and get a few chicken eggs")
         return f"chicken eggs ({randint(1, 5)})"
-
-    def go_to_vet(self):
-        """
-        Depending on the odds,
-        the animal either needs to be seen by a vet or not.
-        """
-        chances = randint(0, 1)
-        if chances == 1:
-            self.vet_check = True
-            return f"{self.name} needs to be examined by a vet"
-        else:
-            return ""

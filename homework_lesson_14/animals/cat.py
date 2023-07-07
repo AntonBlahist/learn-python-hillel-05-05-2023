@@ -24,15 +24,3 @@ class Cat(Animal):
         print(f"You are playing with {self.name} for {hours} hours"
               f" and your mood improves")
         return "a good mood"
-
-    def go_to_vet(self):
-        """
-        Depending on the odds,
-        the animal either needs to be seen by a vet or not.
-        """
-        chances = randint(0, 1)
-        if chances == 1:
-            self.vet_check = True
-            return f"{self.name} needs to be examined by a vet"
-        else:
-            return ""
