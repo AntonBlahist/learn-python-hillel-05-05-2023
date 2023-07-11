@@ -1,10 +1,10 @@
-from dataprocessor import DataEntry, MetricCalculator, FileProcessor
+import pathlib
+# from dataprocessor import DataEntry, MetricCalculator, FileProcessor
 
 
 if __name__ == "__main__":
-    pass
-
-"""
-Из папки с файлами создаю список этих файлов с помощью "from os import listdir", например,
-и уже к каждому файлу из списка применяю чтение.
-"""
+    # Create a list of files objects
+    files = []
+    for entry in pathlib.Path("SKU/").iterdir():
+        if entry.is_file():
+            files.append(entry)
