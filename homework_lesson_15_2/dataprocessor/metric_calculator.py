@@ -1,3 +1,4 @@
+import datetime
 import pandas as pd
 import pathlib
 import uuid
@@ -6,17 +7,26 @@ import uuid
 class MetricCalculator:
     def __init__(
             self,
-            data: list[DataEntry],  # don't know what is expected here yet
+            processed_filenames: list[str],
+            path: str,
+            date: datetime.date,
+            time: datetime.time,
+            sku: str,
+            warehouse: str,
+            warehouse_cell_id: int,
+            operation: str,
+            invoice: str,
+            expiration_date: datetime.date,
+            operation_cost: float,
+            comment: str
             # additional parameter expected ..?_index: dict,
             # additional parameter expected
     ):
         """
         Class MetricCalculator
-        :param data: don't know what is expected here yet
         additional parameter expected ..?_index: dict,
         additional parameter expected
         """
-        self.data = data
         # additional variable expected
         # additional variable expected
 
