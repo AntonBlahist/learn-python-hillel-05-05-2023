@@ -1,7 +1,7 @@
 import datetime
-import pandas as pd
 import pathlib
 import uuid
+import pandas as pd
 
 
 class MetricCalculator:

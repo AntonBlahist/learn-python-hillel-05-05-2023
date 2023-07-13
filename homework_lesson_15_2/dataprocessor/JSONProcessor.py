@@ -1,10 +1,10 @@
 import datetime
 import pathlib
 import pandas as pd
-import uuid
+from .file_processor import FileProcessor
 
 
-class FileProcessor:
+class JSONProcessor(FileProcessor):
     def __init__(
             self,
             processed_filenames: list[str],
@@ -21,7 +21,7 @@ class FileProcessor:
             comment: str
     ):
         """
-        SuperClass FileProcessor
+        SubClass JSONProcessor
         :param processed_filenames: filenames list
         :param path: file path
         :param date: event date
@@ -36,21 +36,24 @@ class FileProcessor:
         (loss if less than zero, profit if more than zero)
         :param comment: comment
         """
-        self.processed_filenames = processed_filenames
-        self.path = path
-        self.date = date
-        self.time = time
-        self.sku = sku
-        self.warehouse = warehouse
-        self.warehouse_cell_id = warehouse_cell_id
-        self.operation = operation
-        self.invoice = invoice
-        self.expiration_date = expiration_date
-        self.operation_cost = operation_cost
-        self.comment = comment
+        super().__init__(
+            processed_filenames=processed_filenames,
+            path=path,
+            date=date,
+            time=time,
+            sku=sku,
+            warehouse=warehouse,
+            warehouse_cell_id=warehouse_cell_id,
+            operation=operation,
+            invoice=invoice,
+            expiration_date=expiration_date,
+            operation_cost=operation_cost,
+            comment=comment
+        )
 
     def process_directory(self):
-        """
-        This method is responsible for file handling.
-        """
-        raise NotImplementedError
+        # Create a list of JSON files names.
+        for entry in pathlib.Path(self.path).iterdir():
+            if entry.is_file() and ".json" in entry.name:
+                self.processed_filenames.append(entry.name)
+        # Read JSON files.
